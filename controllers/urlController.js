@@ -11,7 +11,6 @@ const generateShortUrl = () => {
 
 exports.createShortUrl = async (req, res) => {
   const { longUrl, customAlias, topic } = req.body;
-
   if (!longUrl) {
     return res.status(400).json({ error: 'longUrl is required' });
   }
@@ -34,6 +33,7 @@ exports.createShortUrl = async (req, res) => {
       shortUrl,
       customAlias: customAlias || null,
       topic,
+      userId:req.user.id
     });
 
 
@@ -52,13 +52,11 @@ exports.createShortUrl = async (req, res) => {
 exports.redirectToLongUrl = async (req, res) => {
   try {
     const { shortUrl } = req.params;
-    console.log("i am here ",shortUrl);
-// console.log(shortUrl,"req----",req);
     const cachedUrl = await redis.get(shortUrl);
-    // if (cachedUrl) {
-    //   res.redirect(cachedUrl);
-    //   return;
-    // // }
+    if (cachedUrl) {
+      res.redirect(cachedUrl);
+      return;
+    }
     const url = await Url.findOne({ where: { shortUrl } });
 
     if (!url) {

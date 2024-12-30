@@ -12,7 +12,6 @@ router.get(
   "/google/callback",
   passport.authenticate("google", { session: false }),
   (req, res) => {
-    // console.log(req.user);
     const token = jwt.sign(JSON.parse(JSON.stringify(req.user)), process.env.JWT_SECRET, {
       expiresIn: "1h",
     });

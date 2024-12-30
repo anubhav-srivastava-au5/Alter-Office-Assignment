@@ -1,5 +1,6 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/db");
+const Url=require('./Url');
 
 const User = sequelize.define("User", {
   id: {
@@ -28,6 +29,8 @@ const User = sequelize.define("User", {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW,
   },
+  
 });
+User.hasMany(Url, { foreignKey: 'userId' })
 
 module.exports = User;

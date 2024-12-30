@@ -167,7 +167,7 @@ exports.getUrlAnalytics = async (req, res) => {
   
   exports.getOverallAnalytics = async (req, res) => {
     try {
-      const userUrls = await Url.findAll(); 
+      const userUrls = await Url.findAll({ where: { userId:req.user.id } }); 
       if (userUrls.length === 0) {
         return res.status(404).json({ error: 'No URLs found for this user' });
       }

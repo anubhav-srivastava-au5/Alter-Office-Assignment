@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/db');
+const User = require('./User').default;
 
 const Url = sequelize.define('Url', {
   longUrl: {
@@ -22,6 +23,15 @@ const Url = sequelize.define('Url', {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW,
   },
+  userId: {
+    type: DataTypes.UUID,
+    allowNull: false,
+    references: {
+      model: User,
+      key: 'id',
+    }
+  },
 });
+// Url.belongsTo(User, { foreignKey: 'userId' })
 
 module.exports = Url;
