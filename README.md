@@ -1,7 +1,7 @@
 # An Advanced URL Shortener app with Comprehensive Analytics, Custom Aliases, and Rate Limiting
 
 Live URL -> 
-Documentation URL -> 
+Documentation URL -> http://localhost:3000/api-docs
 
 This project implements a scalable and feature-rich URL Shortener API. Key features include:
 
@@ -17,7 +17,7 @@ Scalability: Dockerized for easy deployment and scaling on cloud platforms.
 
 Technologies Used:
 
- Nodejs
+ Nodejs,
  PostgreSQL
 
 

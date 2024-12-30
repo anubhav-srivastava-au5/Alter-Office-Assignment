@@ -9,7 +9,8 @@ const urlRoutes = require('./routes/urlRoutes');
 const analyticsRoutes=require('./routes/analyticsRoutes');
 const session = require('express-session');
 const app=express();
-
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocs = require('./swagger');
 app.use(express.json());
 
 // Rate limiting
@@ -18,7 +19,7 @@ const limiter = rateLimit({
   max: 10,
   message: "Too many requests, please try again later.",
 });
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 // Middleware setup
 app.use(session({ secret: 'your-secret-key', resave: false, saveUninitialized: true }));
 app.use(passport.initialize());

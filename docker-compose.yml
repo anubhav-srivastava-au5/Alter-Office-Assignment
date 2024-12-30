@@ -1,0 +1,21 @@
+version: "1"
+
+services:
+  postgres:
+    image: postgres
+    ports:
+      - "5431:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: url-shortner
+      POSTGRES_PASSWORD: password
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+
+  app:
+    image: url-shortner
+    ports:
+      - "3001:3001"
