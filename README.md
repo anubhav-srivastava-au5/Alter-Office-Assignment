@@ -1,6 +1,6 @@
 # An Advanced URL Shortener app with Comprehensive Analytics, Custom Aliases, and Rate Limiting
 
-Live URL -> 
+Live URL -> url-shortner-lb-384304354.ap-south-1.elb.amazonaws.com
 Documentation URL -> http://localhost:3000/api-docs
 
 This project implements a scalable and feature-rich URL Shortener API. Key features include:
